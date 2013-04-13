@@ -1,0 +1,5 @@
+/CStock/bin/
+/CStock/obj/
+*.suo
+*.exe
+*.lib
