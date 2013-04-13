@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using CStock.tsePublic;
 
 namespace CStock
 {
@@ -30,7 +32,63 @@ namespace CStock
 
         private void خروجToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ExitFlag = true;
             Application.Exit();
+        }
+
+        private Thread thread_UpData;
+        
+        private DataSet LastDay_DS;
+        private volatile bool ExitFlag = false;
+        private readonly string stock_user = "tsstock.ir";
+        private readonly string stock_pass = "tsstock";
+        private void Update_Data()
+        {
+  
+                TsePublicSoapClient tseclient = new TsePublicSoapClient();
+
+                while (!ExitFlag)
+                {
+                    try
+                    {
+                        LastDay_DS = tseclient.SectorTradeLastDay(stock_user, stock_pass);
+                        this.LastDayTrade_DG.DataSource = LastDay_DS;
+                    }
+                    catch (Exception e)
+                    {
+                        Stat_NoConnection(true);
+#if DEBUG
+                        Log.WriteLog(e.ToString());
+#else
+                    Log.WriteLog(CStock.Properties.Resources.ERROR_CONNECTION);
+#endif
+                        Thread.Sleep(Settings.Update_Time * 1000);
+                    }
+                    Stat_NoConnection(false);
+                    Thread.Sleep(Settings.Update_Time * 1000);
+                }            
+        }
+        delegate void Stat_NoConnCallback(bool visibility);
+
+        private void Stat_NoConnection(bool visibility)
+        {
+            if (this.LastTradeDay_Stat.InvokeRequired)
+            {
+                Stat_NoConnCallback s = new Stat_NoConnCallback(Stat_NoConnection);
+                this.Invoke(s,new object[] {visibility});
+            }
+            else
+            {
+                this.LastTradeDay_Stat.Visible = true;
+                this.LastTradeDay_Stat.Text = CStock.Properties.Resources.NOCONNECTION;
+            }
+        }
+
+        private void CStock_Form_Load(object sender, EventArgs e)
+        {
+            ThreadStart updata= new ThreadStart(Update_Data);
+            thread_UpData = new Thread(updata);
+            thread_UpData.Start();            
         }
     }
 
