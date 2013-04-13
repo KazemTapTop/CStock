@@ -23,19 +23,6 @@ namespace CStock
                 System.Environment.Exit(1);
             }
         }
-
-        private void تنظیماتToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form newOpt = new Options();
-            newOpt.ShowDialog();
-        }
-
-        private void خروجToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ExitFlag = true;
-            Application.Exit();
-        }
-
         private Thread thread_UpData;
         
         private DataSet LastDay_DS;
@@ -88,7 +75,25 @@ namespace CStock
         {
             ThreadStart updata= new ThreadStart(Update_Data);
             thread_UpData = new Thread(updata);
-            thread_UpData.Start();            
+            thread_UpData.Start();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, FormClosedEventArgs e)
+        {
+            ExitFlag = true;
+            Application.Exit();
+        }
+
+        private void ExitButton_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ExitFlag = true;
+            Application.Exit();
+        }
+
+        private void Settings_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form newOpt = new Options();
+            newOpt.ShowDialog();
         }
     }
 
