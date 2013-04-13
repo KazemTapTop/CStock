@@ -31,30 +31,37 @@ namespace CStock
         private readonly string stock_pass = "tsstock";
         private void Update_Data()
         {
-  
-                TsePublicSoapClient tseclient = new TsePublicSoapClient();
 
-                while (!ExitFlag)
+            TsePublicSoapClient tseclient = new TsePublicSoapClient();
+
+            
+            while ((!ExitFlag))
+            {
+                try
                 {
-                    try
-                    {
-                        LastDay_DS = tseclient.SectorTradeLastDay(stock_user, stock_pass);
-                        this.LastDayTrade_DG.DataSource = LastDay_DS;
-                    }
-                    catch (Exception e)
-                    {
-                        Stat_NoConnection(true);
+                    LastDay_DS = tseclient.SectorTradeLastDay(stock_user, stock_pass);
+                    this.LastDayTrade_DG.DataSource = LastDay_DS;
+                }
+                catch (Exception e)
+                {
+                    Stat_NoConnection(true);
 #if DEBUG
-                        Log.WriteLog(e.ToString());
+                    Log.WriteLog(e.ToString());
 #else
                     Log.WriteLog(CStock.Properties.Resources.ERROR_CONNECTION);
 #endif
-                        Thread.Sleep(Settings.Update_Time * 1000);
-                    }
-                    Stat_NoConnection(false);
                     Thread.Sleep(Settings.Update_Time * 1000);
-                }            
+                }
+                Stat_NoConnection(false);
+                for (int i = 0; i < Settings.Update_Time; i++)
+                {
+                    if (ExitFlag)
+                        break;
+                    Thread.Sleep(1);
+                }
+            }
         }
+        //A function and delegate defined because only creating thread can change form status;
         delegate void Stat_NoConnCallback(bool visibility);
 
         private void Stat_NoConnection(bool visibility)
@@ -79,12 +86,6 @@ namespace CStock
         }
 
         private void ExitToolStripMenuItem_Click(object sender, FormClosedEventArgs e)
-        {
-            ExitFlag = true;
-            Application.Exit();
-        }
-
-        private void ExitButton_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ExitFlag = true;
             Application.Exit();

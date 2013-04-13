@@ -28,25 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CStock_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.LastTradeDay_Stat = new System.Windows.Forms.TextBox();
             this.LastDayTrade_DG = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonExit = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonSettings = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonُSettings = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.listBoxIndicators = new System.Windows.Forms.ListBox();
+            this.ribbon1 = new System.Windows.Forms.Ribbon();
+            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
+            this.ribbonHome = new System.Windows.Forms.RibbonTab();
+            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonTabSettings = new System.Windows.Forms.RibbonTab();
+            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton5 = new System.Windows.Forms.RibbonButton();
+            this.ribbonButton6 = new System.Windows.Forms.RibbonButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LastDayTrade_DG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -94,6 +97,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.listBoxIndicators);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -102,82 +106,112 @@
             this.tabPage2.Text = "اندیکاتورها";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // ribbonControl1
+            // listBoxIndicators
             // 
-            this.ribbonControl1.BackColor = System.Drawing.Color.SkyBlue;
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.barButtonExit,
-            this.barButtonSettings});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 6;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonHome,
-            this.ribbonُSettings});
-            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit1});
-            this.ribbonControl1.Size = new System.Drawing.Size(915, 142);
+            this.listBoxIndicators.FormattingEnabled = true;
+            this.listBoxIndicators.Location = new System.Drawing.Point(697, 6);
+            this.listBoxIndicators.Name = "listBoxIndicators";
+            this.listBoxIndicators.Size = new System.Drawing.Size(203, 290);
+            this.listBoxIndicators.TabIndex = 0;
             // 
-            // barButtonExit
+            // ribbon1
             // 
-            this.barButtonExit.Caption = "خروج";
-            this.barButtonExit.Id = 3;
-            this.barButtonExit.Name = "barButtonExit";
-            this.barButtonExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExitButton_Click);
+            this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.ribbon1.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.Minimized = false;
+            this.ribbon1.Name = "ribbon1";
             // 
-            // barButtonSettings
             // 
-            this.barButtonSettings.Caption = "تنظیمات";
-            this.barButtonSettings.Id = 4;
-            this.barButtonSettings.Name = "barButtonSettings";
-            this.barButtonSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Settings_Click);
+            // 
+            this.ribbon1.OrbDropDown.BorderRoundness = 8;
+            this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.OrbDropDown.Name = "";
+            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 72);
+            this.ribbon1.OrbDropDown.TabIndex = 0;
+            this.ribbon1.OrbImage = null;
+            // 
+            // 
+            // 
+            this.ribbon1.QuickAcessToolbar.Items.Add(this.ribbonButton1);
+            this.ribbon1.QuickAcessToolbar.Items.Add(this.ribbonButton3);
+            this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ribbon1.Size = new System.Drawing.Size(915, 169);
+            this.ribbon1.TabIndex = 3;
+            this.ribbon1.Tabs.Add(this.ribbonHome);
+            this.ribbon1.Tabs.Add(this.ribbonTabSettings);
+            this.ribbon1.TabsMargin = new System.Windows.Forms.Padding(12, 26, 20, 0);
+            this.ribbon1.Text = "ribbon1";
+            // 
+            // ribbonButton1
+            // 
+            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
+            this.ribbonButton1.MaximumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton1.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
+            this.ribbonButton1.MinimumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
+            this.ribbonButton1.Text = "ribbonButton1";
+            // 
+            // ribbonButton3
+            // 
+            this.ribbonButton3.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.Image")));
+            this.ribbonButton3.MaximumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton3.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
+            this.ribbonButton3.MinimumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton3.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.SmallImage")));
+            this.ribbonButton3.Text = "ribbonButton3";
             // 
             // ribbonHome
             // 
-            this.ribbonHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
-            this.ribbonHome.Name = "ribbonHome";
-            this.ribbonHome.Text = "خــــــانه";
+            this.ribbonHome.Panels.Add(this.ribbonPanel1);
+            this.ribbonHome.Panels.Add(this.ribbonPanel2);
+            this.ribbonHome.Text = "خانه";
             // 
-            // ribbonPageGroup1
+            // ribbonPanel1
             // 
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPanel1.Text = "Exit";
             // 
-            // ribbonPageGroup2
+            // ribbonPanel2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonExit);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "        Exit                           ";
+            this.ribbonPanel2.Text = "ribbonPanel2";
             // 
-            // ribbonُSettings
+            // ribbonTabSettings
             // 
-            this.ribbonُSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
-            this.ribbonُSettings.Name = "ribbonُSettings";
-            this.ribbonُSettings.Text = "گزینه ها";
+            this.ribbonTabSettings.Text = "گزینه‌ها";
             // 
-            // ribbonPageGroup3
+            // ribbonButton2
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonSettings);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "                                      ";
+            this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
+            this.ribbonButton2.MaximumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton2.MinimumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
             // 
-            // repositoryItemButtonEdit1
+            // ribbonButton4
             // 
-            this.repositoryItemButtonEdit1.AutoHeight = false;
-            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.ribbonButton4.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.Image")));
+            this.ribbonButton4.MaximumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton4.MinimumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
+            // 
+            // ribbonButton5
+            // 
+            this.ribbonButton5.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.Image")));
+            this.ribbonButton5.MaximumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton5.MinimumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton5.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton5.SmallImage")));
+            // 
+            // ribbonButton6
+            // 
+            this.ribbonButton6.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.Image")));
+            this.ribbonButton6.MaximumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton6.MinimumSize = new System.Drawing.Size(0, 0);
+            this.ribbonButton6.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton6.SmallImage")));
             // 
             // CStock_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 519);
-            this.Controls.Add(this.ribbonControl1);
+            this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.tabControl1);
             this.Name = "CStock_Form";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -189,8 +223,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LastDayTrade_DG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -202,15 +235,18 @@
         private System.Windows.Forms.DataGridView LastDayTrade_DG;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox LastTradeDay_Stat;
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
-        private DevExpress.XtraBars.BarButtonItem barButtonExit;
-        private DevExpress.XtraBars.BarButtonItem barButtonSettings;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonHome;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonُSettings;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private System.Windows.Forms.ListBox listBoxIndicators;
+        private System.Windows.Forms.Ribbon ribbon1;
+        private System.Windows.Forms.RibbonButton ribbonButton1;
+        private System.Windows.Forms.RibbonButton ribbonButton3;
+        private System.Windows.Forms.RibbonTab ribbonHome;
+        private System.Windows.Forms.RibbonPanel ribbonPanel1;
+        private System.Windows.Forms.RibbonButton ribbonButton2;
+        private System.Windows.Forms.RibbonButton ribbonButton4;
+        private System.Windows.Forms.RibbonButton ribbonButton5;
+        private System.Windows.Forms.RibbonButton ribbonButton6;
+        private System.Windows.Forms.RibbonPanel ribbonPanel2;
+        private System.Windows.Forms.RibbonTab ribbonTabSettings;
     }
 }
 
