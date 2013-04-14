@@ -50,14 +50,19 @@ namespace CStock
 #else
                     Log.WriteLog(CStock.Properties.Resources.ERROR_CONNECTION);
 #endif
-                    Thread.Sleep(Settings.Update_Time * 1000);
+                    for (int i = 0; i < Settings.Update_Time; i++)
+                    {
+                        if (ExitFlag)
+                            break;
+                        Thread.Sleep(1000);
+                    }
                 }
                 Stat_NoConnection(false);
                 for (int i = 0; i < Settings.Update_Time; i++)
                 {
                     if (ExitFlag)
                         break;
-                    Thread.Sleep(1);
+                    Thread.Sleep(1000);
                 }
             }
         }
@@ -91,10 +96,101 @@ namespace CStock
             Application.Exit();
         }
 
-        private void Settings_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            Form newOpt = new Options();
-            newOpt.ShowDialog();
+            ExitFlag = true;
+            Application.Exit();
+        }
+
+        private void Sec15MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 15;
+        }
+
+        private void Sec30MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 30;
+        }
+
+        private void Min1MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 60;
+        }
+
+        private void Min2MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 120;
+        }
+
+        private void Min5MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 300;
+        }
+
+        private void Min10MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 600;
+        }
+
+        private void Min15MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 900;
+        }
+
+        private void Hour1MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 3600;
+        }
+
+        private void Hour2MenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Update_Time = 7200;
+        }
+
+        private void CustomUpTimeMenuItem_Click(object sender, EventArgs e)
+        {
+            Form custom = new CustomUpTime();
+            custom.ShowDialog();
+        }
+
+        private void ViewMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (Settings.Update_Time)
+            {
+                case 15:
+                    this.Sec15MenuItem.Checked = true;
+                    break;
+                case 30 :
+                    this.Sec30MenuItem.Checked = true;
+                    break;
+                case 60:
+                    this.Min1MenuItem.Checked = true;
+                    break;
+                case 300:
+                    this.Min5MenuItem.Checked = true;
+                    break;
+                case 600:
+                    this.Min10MenuItem.Checked = true;
+                    break;
+                case 900:
+                    this.Min15MenuItem.Checked = true;
+                    break;
+                case 3600:
+                    this.Hour1MenuItem.Checked = true;
+                    break;
+                case 7200:
+                    this.Hour2MenuItem.Checked = true;
+                    break;
+                default:
+                    this.CustomUpTimeMenuItem.Checked = true;
+                    break;
+            }
+        }
+
+        private void SettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            Form opt = new Options();
+            opt.ShowDialog();
         }
     }
 

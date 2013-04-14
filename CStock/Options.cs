@@ -26,13 +26,19 @@ namespace CStock
             {
                 try
                 {
-                    Settings.Update_Time  = Convert.ToUInt16(this.textUpdate_Time.Text, 10);
+                    ushort a = Convert.ToUInt16(this.textUpdate_Time.Text, 10);
+                    if ((a > 7200) && (a < 0))
+                        throw new System.ArgumentException();
+
+                    Settings.Update_Time = a;
+
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("مقدار وارد شده برای زمان به روزآوری صحیح نمی باشد.لطفا مقداری بین 30 تا 7200 وارد نمایید", "خطا!"
                         , MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
                         MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                    return;
                 }
                 try
                 {
