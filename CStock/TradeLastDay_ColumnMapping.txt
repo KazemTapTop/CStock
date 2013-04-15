@@ -1,0 +1,17 @@
+﻿
+                <xs:element name="DEven" type="xs:int" minOccurs="0" />
+                <xs:element name="ZTotTran" type="xs:decimal" minOccurs="0" />
+                <xs:element name="QTotTran5J" type="xs:decimal" minOccurs="0" />
+                <xs:element name="QTotCap" type="xs:decimal" minOccurs="0" />
+                <xs:element name="InsCode" type="xs:long" minOccurs="0" />
+                <xs:element name="LVal30" type="xs:string" minOccurs="0" />
+                <xs:element name="PClosing" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PDrCotVal" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ZTotTran1" type="xs:decimal" minOccurs="0" />
+                <xs:element name="QTotTran5J1" type="xs:decimal" minOccurs="0" />
+                <xs:element name="QTotCap1" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PriceChange" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PriceMin" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PriceMax" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PriceFirst" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PriceYesterday" type="xs:decimal" minOccurs="0" />
