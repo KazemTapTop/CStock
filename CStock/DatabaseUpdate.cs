@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CStock
 {
-    public class DatabaseUpdate
+    public class TradeLastDay_DBUpdate
     {
         ArrayList nomad_names = new ArrayList();
 
@@ -58,9 +58,9 @@ namespace CStock
             if (!InitNomads())  //Get previous nomads from SQL Server
                 return false;
 
-            ConvertAraToFar();
+            ConvertAraToFar(); //Convert arabic chars to farsi ones.
             
-            if (!CreateNewTables(ref ds))
+            if (!CreateNewNomads(ref ds))
                 return false;
 
             if (!StoreInSQL())
@@ -70,9 +70,28 @@ namespace CStock
 
         private bool StoreInSQL()
         {
+            try
+            {
+                if (Settings.Server_Type == 0) //Local Server
+                {
+                    c = new SqlConnection("user id=" + Settings.username + ";Pwd=" + Settings.password + ";" +
+                       "Data Source=" + Settings.ip_addr + "," + Settings.port.ToString() + ";Trusted_Connection=true;Connection Timeout=30;Database=kazem");
+                }
+                else
+                {
+                    c = new SqlConnection("user id=" + Settings.username + ";Pwd=" + Settings.password + ";" +
+                        "Data Source=" + Settings.ip_addr + "," + Settings.port.ToString() + ";Trusted_Connection=false;Connection Timeout=30;Database=kazem");
+                }
+
+            }
+            catch (Exception e)
+            {
+                Log.WriteLog(e.ToString());
+                return false;
+            }
             return true;
         }
-        private bool CreateNewTables(ref DataSet ds)
+        private bool CreateNewNomads(ref DataSet ds)
         {
             SqlConnection c;
             try
@@ -89,10 +108,32 @@ namespace CStock
                 }
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    string s = (string)dr[0];
+                    StringBuilder cmd_str = new StringBuilder("create ");
+                    string s = (string)dr.ItemArray[0];
                     if (nomad_names.IndexOf(s) == -1)
                     {
-                        SqlCommand sc = new SqlCommand("create " + s,c);
+                        cmd_str.Append(s + ";");
+                        //Add columns to newly created table
+                        cmd_str.AppendLine("ALTER TABLE " + s);
+                        cmd_str.AppendLine("ADD LVal18AFC nvarchar(30),");
+                        cmd_str.AppendLine("ADD DEven datetime,");
+                        cmd_str.AppendLine("ADD ZTotTran decimal(18,10),");
+                        cmd_str.AppendLine("ADD QTotTran5J decimal(18,10),");
+                        cmd_str.AppendLine("ADD QTotCap decimal(18,10),");
+                        cmd_str.AppendLine("ADD InsCode float,");
+                        cmd_str.AppendLine("ADD LVal30 nvarchar(30),");
+                        cmd_str.AppendLine("ADD PClosing decimal(18,10),");
+                        cmd_str.AppendLine("ADD PDrCotVal decimal(18,10),");
+                        cmd_str.AppendLine("ADD ZTotTran1 decimal(18,10),");
+                        cmd_str.AppendLine("ADD QTotTran5J1 decimal(18,10),");
+                        cmd_str.AppendLine("ADD QTotCap1 decimal(18,10),");
+                        cmd_str.AppendLine("ADD PriceChange decimal(18,10),");
+                        cmd_str.AppendLine("ADD PriceMin decimal(18,10),");
+                        cmd_str.AppendLine("ADD PriceMax decimal(18,10),");
+                        cmd_str.AppendLine("ADD PriceFirst decimal(18,10),");
+                        cmd_str.AppendLine("ADD PriceYesterday decimal(18,10);");
+
+                        SqlCommand sc = new SqlCommand(cmd_str.ToString(),c);
                         sc.ExecuteNonQuery();
                     }
                 }
@@ -100,6 +141,7 @@ namespace CStock
             catch (Exception e)
             {
                 Log.WriteLog(e.ToString());
+                return false;
             }
             return true;
         }

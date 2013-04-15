@@ -33,7 +33,7 @@ namespace CStock
         {
 
             TsePublicSoapClient tseclient = new TsePublicSoapClient();
-            DatabaseUpdate du = new DatabaseUpdate();
+            TradeLastDay_DBUpdate du = new TradeLastDay_DBUpdate();
             
             while ((!ExitFlag))
             {
@@ -104,7 +104,7 @@ namespace CStock
         {
             ThreadStart updata= new ThreadStart(Update_Data);
             thread_UpData = new Thread(updata);
-            DatabaseUpdate du = new DatabaseUpdate();
+            TradeLastDay_DBUpdate du = new TradeLastDay_DBUpdate();
             du.UpdateData(ref LastDay_DS);
             //thread_UpData.Start();
         }
