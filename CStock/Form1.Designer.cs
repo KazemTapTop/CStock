@@ -31,8 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CStock_Form));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.LastTradeDay_Stat = new System.Windows.Forms.TextBox();
             this.LastDayTrade_DG = new System.Windows.Forms.DataGridView();
+            this.LVal18AFC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DEven = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZTotTran = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QTotTran5J = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QTotCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LVal30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PClosing = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PDrCotVal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceChange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceFirst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceYesterday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastTradeDay_Stat = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBoxIndicators = new System.Windows.Forms.ListBox();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
@@ -77,24 +91,150 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 186);
+            this.tabControl1.Location = new System.Drawing.Point(3, 124);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(912, 327);
+            this.tabControl1.Size = new System.Drawing.Size(912, 389);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.LastTradeDay_Stat);
             this.tabPage1.Controls.Add(this.LastDayTrade_DG);
+            this.tabPage1.Controls.Add(this.LastTradeDay_Stat);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(904, 301);
+            this.tabPage1.Size = new System.Drawing.Size(904, 363);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = " معاملات آخرین روز";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // LastDayTrade_DG
+            // 
+            this.LastDayTrade_DG.AllowUserToAddRows = false;
+            this.LastDayTrade_DG.AllowUserToDeleteRows = false;
+            this.LastDayTrade_DG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LastDayTrade_DG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LVal18AFC,
+            this.DEven,
+            this.ZTotTran,
+            this.QTotTran5J,
+            this.QTotCap,
+            this.InsCode,
+            this.LVal30,
+            this.PClosing,
+            this.PDrCotVal,
+            this.PriceChange,
+            this.PriceMin,
+            this.PriceMax,
+            this.PriceFirst,
+            this.PriceYesterday});
+            this.LastDayTrade_DG.Location = new System.Drawing.Point(-4, 0);
+            this.LastDayTrade_DG.Name = "LastDayTrade_DG";
+            this.LastDayTrade_DG.ReadOnly = true;
+            this.LastDayTrade_DG.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LastDayTrade_DG.Size = new System.Drawing.Size(912, 363);
+            this.LastDayTrade_DG.TabIndex = 4;
+            // 
+            // LVal18AFC
+            // 
+            this.LVal18AFC.DataPropertyName = "LVal18AFC";
+            this.LVal18AFC.HeaderText = "نماد";
+            this.LVal18AFC.Name = "LVal18AFC";
+            this.LVal18AFC.ReadOnly = true;
+            // 
+            // DEven
+            // 
+            this.DEven.DataPropertyName = "DEven";
+            this.DEven.HeaderText = "تاريخ";
+            this.DEven.Name = "DEven";
+            this.DEven.ReadOnly = true;
+            this.DEven.Width = 80;
+            // 
+            // ZTotTran
+            // 
+            this.ZTotTran.DataPropertyName = "ZTotTran";
+            this.ZTotTran.HeaderText = "تعداد معاملات";
+            this.ZTotTran.Name = "ZTotTran";
+            this.ZTotTran.ReadOnly = true;
+            // 
+            // QTotTran5J
+            // 
+            this.QTotTran5J.DataPropertyName = "QTotTran5J";
+            this.QTotTran5J.HeaderText = "تعداد سهام معامله شده - حجم";
+            this.QTotTran5J.Name = "QTotTran5J";
+            this.QTotTran5J.ReadOnly = true;
+            // 
+            // QTotCap
+            // 
+            this.QTotCap.DataPropertyName = "QTotCap";
+            this.QTotCap.HeaderText = "ارزش معاملات";
+            this.QTotCap.Name = "QTotCap";
+            this.QTotCap.ReadOnly = true;
+            // 
+            // InsCode
+            // 
+            this.InsCode.DataPropertyName = "InsCode";
+            this.InsCode.HeaderText = "کد نماد";
+            this.InsCode.Name = "InsCode";
+            this.InsCode.ReadOnly = true;
+            // 
+            // LVal30
+            // 
+            this.LVal30.DataPropertyName = "LVal30";
+            this.LVal30.HeaderText = "توضيح";
+            this.LVal30.Name = "LVal30";
+            this.LVal30.ReadOnly = true;
+            // 
+            // PClosing
+            // 
+            this.PClosing.DataPropertyName = "PClosing";
+            this.PClosing.HeaderText = "قيمت نهايي";
+            this.PClosing.Name = "PClosing";
+            this.PClosing.ReadOnly = true;
+            // 
+            // PDrCotVal
+            // 
+            this.PDrCotVal.DataPropertyName = "PDrCotVal";
+            this.PDrCotVal.HeaderText = "آخرين قيمت معامله شده";
+            this.PDrCotVal.Name = "PDrCotVal";
+            this.PDrCotVal.ReadOnly = true;
+            // 
+            // PriceChange
+            // 
+            this.PriceChange.DataPropertyName = "PriceChange";
+            this.PriceChange.HeaderText = "تغيير قيمت";
+            this.PriceChange.Name = "PriceChange";
+            this.PriceChange.ReadOnly = true;
+            // 
+            // PriceMin
+            // 
+            this.PriceMin.DataPropertyName = "PriceMin";
+            this.PriceMin.HeaderText = "حداقل قيمت";
+            this.PriceMin.Name = "PriceMin";
+            this.PriceMin.ReadOnly = true;
+            // 
+            // PriceMax
+            // 
+            this.PriceMax.DataPropertyName = "PriceMax";
+            this.PriceMax.HeaderText = "حداکثر قيمت";
+            this.PriceMax.Name = "PriceMax";
+            this.PriceMax.ReadOnly = true;
+            // 
+            // PriceFirst
+            // 
+            this.PriceFirst.DataPropertyName = "PriceFirst";
+            this.PriceFirst.HeaderText = "قيمت اولين معامله";
+            this.PriceFirst.Name = "PriceFirst";
+            this.PriceFirst.ReadOnly = true;
+            // 
+            // PriceYesterday
+            // 
+            this.PriceYesterday.DataPropertyName = "PriceYesterday";
+            this.PriceYesterday.HeaderText = "قيمت ديروز";
+            this.PriceYesterday.Name = "PriceYesterday";
+            this.PriceYesterday.ReadOnly = true;
             // 
             // LastTradeDay_Stat
             // 
@@ -108,21 +248,13 @@
             this.LastTradeDay_Stat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.LastTradeDay_Stat.Visible = false;
             // 
-            // LastDayTrade_DG
-            // 
-            this.LastDayTrade_DG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LastDayTrade_DG.Location = new System.Drawing.Point(0, 0);
-            this.LastDayTrade_DG.Name = "LastDayTrade_DG";
-            this.LastDayTrade_DG.Size = new System.Drawing.Size(904, 305);
-            this.LastDayTrade_DG.TabIndex = 0;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.listBoxIndicators);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(904, 301);
+            this.tabPage2.Size = new System.Drawing.Size(904, 363);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "اندیکاتورها";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -264,14 +396,14 @@
             this.Hour2MenuItem,
             this.CustomUpTimeMenuItem});
             this.UpdateTimeMenuItem.Name = "UpdateTimeMenuItem";
-            this.UpdateTimeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UpdateTimeMenuItem.Size = new System.Drawing.Size(139, 22);
             this.UpdateTimeMenuItem.Text = "زمان بروزآوری";
             // 
             // Sec15MenuItem
             // 
             this.Sec15MenuItem.CheckOnClick = true;
             this.Sec15MenuItem.Name = "Sec15MenuItem";
-            this.Sec15MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Sec15MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Sec15MenuItem.Text = "15 ثانیه";
             this.Sec15MenuItem.Click += new System.EventHandler(this.Sec15MenuItem_Click);
             // 
@@ -279,7 +411,7 @@
             // 
             this.Sec30MenuItem.CheckOnClick = true;
             this.Sec30MenuItem.Name = "Sec30MenuItem";
-            this.Sec30MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Sec30MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Sec30MenuItem.Text = "30 ثانیه";
             this.Sec30MenuItem.Click += new System.EventHandler(this.Sec30MenuItem_Click);
             // 
@@ -287,7 +419,7 @@
             // 
             this.Min1MenuItem.CheckOnClick = true;
             this.Min1MenuItem.Name = "Min1MenuItem";
-            this.Min1MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Min1MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Min1MenuItem.Text = "1 دقیقه";
             this.Min1MenuItem.Click += new System.EventHandler(this.Min1MenuItem_Click);
             // 
@@ -295,7 +427,7 @@
             // 
             this.Min2MenuItem.CheckOnClick = true;
             this.Min2MenuItem.Name = "Min2MenuItem";
-            this.Min2MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Min2MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Min2MenuItem.Text = "2 دقیقه";
             this.Min2MenuItem.Click += new System.EventHandler(this.Min2MenuItem_Click);
             // 
@@ -303,7 +435,7 @@
             // 
             this.Min5MenuItem.CheckOnClick = true;
             this.Min5MenuItem.Name = "Min5MenuItem";
-            this.Min5MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Min5MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Min5MenuItem.Text = "5 دقیقه";
             this.Min5MenuItem.Click += new System.EventHandler(this.Min5MenuItem_Click);
             // 
@@ -311,7 +443,7 @@
             // 
             this.Min10MenuItem.CheckOnClick = true;
             this.Min10MenuItem.Name = "Min10MenuItem";
-            this.Min10MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Min10MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Min10MenuItem.Text = "10 دقیقه";
             this.Min10MenuItem.Click += new System.EventHandler(this.Min10MenuItem_Click);
             // 
@@ -319,7 +451,7 @@
             // 
             this.Min15MenuItem.CheckOnClick = true;
             this.Min15MenuItem.Name = "Min15MenuItem";
-            this.Min15MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Min15MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Min15MenuItem.Text = "15 دقیقه";
             this.Min15MenuItem.Click += new System.EventHandler(this.Min15MenuItem_Click);
             // 
@@ -327,7 +459,7 @@
             // 
             this.Hour1MenuItem.CheckOnClick = true;
             this.Hour1MenuItem.Name = "Hour1MenuItem";
-            this.Hour1MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Hour1MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Hour1MenuItem.Text = "1 ساعت";
             this.Hour1MenuItem.Click += new System.EventHandler(this.Hour1MenuItem_Click);
             // 
@@ -335,14 +467,14 @@
             // 
             this.Hour2MenuItem.CheckOnClick = true;
             this.Hour2MenuItem.Name = "Hour2MenuItem";
-            this.Hour2MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Hour2MenuItem.Size = new System.Drawing.Size(143, 22);
             this.Hour2MenuItem.Text = "2 ساعت";
             this.Hour2MenuItem.Click += new System.EventHandler(this.Hour2MenuItem_Click);
             // 
             // CustomUpTimeMenuItem
             // 
             this.CustomUpTimeMenuItem.Name = "CustomUpTimeMenuItem";
-            this.CustomUpTimeMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CustomUpTimeMenuItem.Size = new System.Drawing.Size(143, 22);
             this.CustomUpTimeMenuItem.Text = "زمان دلخواه ...";
             this.CustomUpTimeMenuItem.Click += new System.EventHandler(this.CustomUpTimeMenuItem_Click);
             // 
@@ -357,7 +489,7 @@
             // SettingsMenuItem
             // 
             this.SettingsMenuItem.Name = "SettingsMenuItem";
-            this.SettingsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SettingsMenuItem.Size = new System.Drawing.Size(117, 22);
             this.SettingsMenuItem.Text = "&تنظیمات";
             this.SettingsMenuItem.Click += new System.EventHandler(this.SettingsMenuItem_Click);
             // 
@@ -405,7 +537,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataGridView LastDayTrade_DG;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox LastTradeDay_Stat;
         private System.Windows.Forms.ListBox listBoxIndicators;
@@ -440,6 +571,22 @@
         private System.Windows.Forms.ToolStripMenuItem SettingsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
+        private System.Windows.Forms.DataGridView LastDayTrade_DG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LVal18AFC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DEven;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZTotTran;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QTotTran5J;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QTotCap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InsCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LVal30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PClosing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PDrCotVal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceChange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceFirst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PriceYesterday;
+
     }
 }
 

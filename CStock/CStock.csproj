@@ -76,6 +76,7 @@
     <Compile Include="CustomUpTime.Designer.cs">
       <DependentUpon>CustomUpTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseUpdate.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,7 +129,9 @@
     <None Include="Service References\tsePublic\TsePublic.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

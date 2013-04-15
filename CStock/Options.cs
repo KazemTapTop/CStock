@@ -40,6 +40,7 @@ namespace CStock
                         MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                     return;
                 }
+                Settings.Server_Type = cboServer_Type.SelectedIndex - 1;
                 try
                 {
                     IPAddress ip = IPAddress.Parse(textIP.Text);

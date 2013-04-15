@@ -33,14 +33,15 @@ namespace CStock
         {
 
             TsePublicSoapClient tseclient = new TsePublicSoapClient();
-
+            DatabaseUpdate du = new DatabaseUpdate();
             
             while ((!ExitFlag))
             {
                 try
                 {
-                    LastDay_DS = tseclient.SectorTradeLastDay(stock_user, stock_pass);
-                    this.LastDayTrade_DG.DataSource = LastDay_DS;
+                    LastDay_DS = tseclient.TradeLastDay(stock_user, stock_pass);
+                    SetTradeLastDay();
+                    du.UpdateData(ref LastDay_DS);
                 }
                 catch (Exception e)
                 {
@@ -50,6 +51,7 @@ namespace CStock
 #else
                     Log.WriteLog(CStock.Properties.Resources.ERROR_CONNECTION);
 #endif
+
                     for (int i = 0; i < Settings.Update_Time; i++)
                     {
                         if (ExitFlag)
@@ -78,16 +80,33 @@ namespace CStock
             }
             else
             {
-                this.LastTradeDay_Stat.Visible = true;
+                this.LastTradeDay_Stat.Visible = visibility;
                 this.LastTradeDay_Stat.Text = CStock.Properties.Resources.NOCONNECTION;
             }
         }
 
+        delegate void SetTradeLastDayCallBack();
+
+        private void SetTradeLastDay()
+        {
+            if (LastDayTrade_DG.InvokeRequired)
+            {
+                SetTradeLastDayCallBack sc = new SetTradeLastDayCallBack(SetTradeLastDay);
+                this.Invoke(sc);
+            }
+            else
+            {
+                this.LastDayTrade_DG.AutoGenerateColumns = false;
+                this.LastDayTrade_DG.DataSource = LastDay_DS.Tables[0];
+            }
+        }
         private void CStock_Form_Load(object sender, EventArgs e)
         {
             ThreadStart updata= new ThreadStart(Update_Data);
             thread_UpData = new Thread(updata);
-            thread_UpData.Start();
+            DatabaseUpdate du = new DatabaseUpdate();
+            du.UpdateData(ref LastDay_DS);
+            //thread_UpData.Start();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, FormClosedEventArgs e)
